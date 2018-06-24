@@ -51,4 +51,19 @@ class FileManager
 		//xprint($res);
 		return $res;
 	}
+
+	public function openFile($path_to_file)
+	{		
+		if (is_file($path_to_file) && strpos($path_to_file, $this->path) !== false)
+		{
+			$liners = file($path_to_file);
+			$tmp = "";
+			foreach ($liners as $value) {
+				# code...
+				$tmp .= $value . "\r\n";
+			}
+			//xprint($tmp);
+			return $tmp;
+		}else return  -1;
+	}
 }
